@@ -1,29 +1,50 @@
-package finalPractice;
+package MUMPractice;
 
 public class CompleteArray {
 
 	public static void main(String[] args) {
-		System.out.println(isComplete(new int[] {-28, 36}));
+		int[] array = {-5,6,2,3,4,5,8};
+		int result = isComplete(array);
+		System.out.println(result);
 	}
 	
-	public static int isComplete(int[] a) {
-		int isEven = 0, isSquare = 0, isSum8 = 0;
-		for(int i = 0; i < a.length; i++) {
-			if(isSquare(a[i])) isSquare = 1;
-			if(a[i] % 2 == 0) isEven = 1;
-			if(i < a.length-1 && a[i] + a[i+1] == 8) isSum8 = 1;
-			if(isEven == 1 && isSquare == 1 && isSum8 == 1) return 1;
-		}
-		return 0;
-	}
-	
-	public static boolean isSquare(int n) {
-		for(int i = 1; i*i <= n; i++) {
-			if(i*i == n) {
-				return true;
+	public static int isComplete(int[] array) {
+		int min = 0, max = 0, even = 0, allFound = 0;
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] % 2 == 0) {
+				even = 1;
+				min = max = array[i];
+				break;
 			}
 		}
-		return false;
+		if(even != 1) {
+			return 0;
+		}
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] % 2 == 0 && array[i] < min) {
+				min = array[i];
+			}
+			if(array[i] % 2 == 0 && array[i] > max) {
+				max = array[i];
+			}
+		}
+		if(min == max) {
+			return 0;
+		}
+		while(min <= max) {
+			for(int i = 0; i < array.length; i++) {
+				if(min == array[i]) {
+					allFound = 1;
+					min++;
+					break;
+				}
+			}
+			if(allFound != 1) {
+				return 0;
+			}
+			allFound = 0;
+		}
+		return 1;
 	}
 
 }

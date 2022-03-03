@@ -1,25 +1,35 @@
-package finalPractice;
+package MUMPractice;
 
 public class MileageCounter {
 
 	public static void main(String[] args) {
-		int[] a = {9,9,9,9,9,9,9};
-		int[] rslt = mileageCounter(a, 13);
-		for(int x : rslt) System.out.print(x + ",");
+		int[] counter = {9,5,9,7,9,8,9};
+		int miles = 1;
+		int[] result = mileageCounter(counter, miles);
+		for(int x : result) {
+			System.out.println(x);
+		}
 	}
 	
-	public static int[] mileageCounter(int[] a, int miles) {
-		int digit, carry = 0, val = 0;
-		for(int i = 0; i < a.length; i++) {
-			digit = miles % 10;
+	public static int[] mileageCounter(int[] counter, int miles) {
+		int carryMiles = 0, milesDigit, resultMile;
+		int[] resultCounter = new int[counter.length];
+		for(int i = 0; i < counter.length; i++) {
+			milesDigit = miles % 10;
 			miles /= 10;
-			val = a[i] + digit + carry;
-			if(val >= 10) {
-				a[i] = val % 10;
-				carry = 1;
+			resultMile = carryMiles + milesDigit + counter[i];
+			if(resultMile >= 10) {
+				resultCounter[i] = resultMile % 10;
+				carryMiles = 1;
 			}
-			if(carry == 0 && miles == 0) break;
+			else {
+				resultCounter[i] = resultMile;
+				carryMiles = 0;
+			}
+			
 		}
-		return a;
+		return resultCounter;
+		
 	}
+
 }

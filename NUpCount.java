@@ -1,27 +1,30 @@
-package finalPractice;
+package MUMPractice;
 
 public class NUpCount {
 
 	public static void main(String[] args) {
-		int[] arr = {6,-3,1,-2,3,4,4,-12,4};
-		int n = 3;
-		int upCount = nUpCount(arr, n);
-		System.out.println(upCount);
+		int[] a = {2, 3, 1, 5, -8, 6};
+		int n = 5;
+		int upcount = nUpCount(a, n);
+		System.out.println(upcount);
 	}
 	
-	public static int nUpCount(int[] arr, int n) {
-		int status = 0, sum = 0, upCount = 0;
-		for(int i = 0; i < arr.length; i++) {
-			sum += arr[i];
-			if(sum > n && status == 0) {
-				upCount++;
+	public static int nUpCount(int[] a, int n) {
+		int upcount = 0, status = 1, sum = 0;
+		for(int i = 0; i < a.length; i++) {
+			sum = sum + a[i];
+			if(sum > n) {
+				if(status == 1) {
+					upcount++;
+					status = 0;
+				}
+			}
+			else {
 				status = 1;
 			}
-			if(sum <= n && status == 1) {
-				status = 0;
-			}
+			
 		}
-		return upCount;
+		return upcount;
 	}
 
 }

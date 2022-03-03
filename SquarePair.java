@@ -1,18 +1,19 @@
-package finalPractice;
+package MUMPractice;
 
 public class SquarePair {
 
 	public static void main(String[] args) {
-		int[] arr = {11,5,4,20};
-		int squarePair = countSquarePair(arr);
-		System.out.println(squarePair);
+		int[] a = {};
+		int count = countSquarePair(a);
+		System.out.println(count);
 	}
 	
-	public static int countSquarePair(int[] arr) {
+	public static int countSquarePair(int[] a) {
 		int count = 0;
-		for(int i = 0; i < arr.length; i++) {
-			for(int j = 0; j < arr.length; j++) {
-				if(arr[i] < arr[j] && isPerfectSquare(arr[i]+arr[j]) == 1 && arr[i] > 0) {
+		for(int i = 0; i < a.length; i++) {
+			for(int j = 0; j < a.length; j++) {
+				if(j == i) continue;
+				if(isPerfectSquare(a[i], a[j]) && (a[i] < a[j]) && a[i] > 0 && a[j] > 0) {
 					count++;
 				}
 			}
@@ -20,13 +21,14 @@ public class SquarePair {
 		return count;
 	}
 	
-	public static int isPerfectSquare(int n) {
-		for(int i = 0; i*i <= n; i++) {
-			if(i*i == n) {
-				return 1;
+	public static boolean isPerfectSquare(int a, int b) {
+		int n = a + b;
+		for(int i = 0; i * i <= n; i++) {
+			if(i * i == n) {
+				return true;
 			}
 		}
-		return 0;
+		return false;
 	}
 
 }

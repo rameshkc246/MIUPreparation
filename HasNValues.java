@@ -1,30 +1,30 @@
-package finalPractice;
+package MUMPractice;
 
 import java.util.ArrayList;
 
 public class HasNValues {
 
 	public static void main(String[] args) {
-		System.out.println(allValuesTheSame(new int[] {1,1,1,8,8,1,1,1,3}, 3));
+		int[] a = {4,1,1,1,8,1,1,1,3,3};
+		int n = 3;
+		int result = hasNValues(a, n);
+		System.out.println(result);
 	}
 	
-	public static int allValuesTheSame(int[] a, int n) {
-		int[] rslt = new int[n];
-		int k = 0, found, j;
+	public static int hasNValues(int[] a, int n) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		if(n > a.length) return 0;
 		for(int i = 0; i < a.length; i++) {
-			found = 0;
-			for(j = 0; j < rslt.length; j++) {
-				if(a[i] == rslt[j]) {
-					found = 1; break;
-				}
-			}
-			if(found == 0 && k == rslt.length) {
-				return 0;
-			}
-			if(found == 0) {
-				rslt[k++] = a[i];
+			if(!list.contains(a[i])) {
+				list.add(a[i]);
 			}
 		}
-		return k == n? 1 : 0;
+		if(list.size() == n) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
 	}
+
 }

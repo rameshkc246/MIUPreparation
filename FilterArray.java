@@ -1,34 +1,39 @@
-package finalPractice;
+package MUMPractice;
 
-public class FilterArray {
+public class FilterArray {		//Note: Incomplete Logic
 
 	public static void main(String[] args) {
-		int[] a = {9, -9};
-		int n = 3;
-		int[] result = filterArray(a, n);
-		for(int x : result) {
-			System.out.print(x + ",");
-		}
+		int[] array = {1,9,3,11,7,13,9};
+		int result = isFilteredArray(array);
+		System.out.println(result);
 	}
 	
-	public static int[] filterArray(int[] a, int n) {
-		int len = 0, noOfDigit = 0;
-		int num = n;
-		while(num != 0) {
-			if(num % 2 == 1) {
-				len++;
+	public static int isFilteredArray(int[] array) {
+		int isFilter = 0;
+		for(int i = 0; i < array.length; i++) {
+			if(array[i] == 9) {
+				for(int j = 0; j < array.length; j++) {
+					if(array[j] == 11) {
+						isFilter = 1;
+						break;
+					}
+				}
 			}
-			noOfDigit++;
-			num /= 2;
-		}
-		if(noOfDigit > a.length) return null;
-		int[] rslt = new int[len];
-		for(int i = 0, k = 0; i < a.length && n != 0; i++) {
-			if(n % 2 == 1) {
-				rslt[k++] = a[i];
+			if(array[i] == 7) {
+				for(int j = 0; j < array.length; j++) {
+					if(array[j] == 13) {
+						isFilter = 0;
+						break;
+					}
+				}
 			}
-			n /= 2;
 		}
-		return rslt;
+		if(isFilter == 1) {
+			return 1;
+		}
+		else {
+			return 0;
+		}
 	}
+
 }

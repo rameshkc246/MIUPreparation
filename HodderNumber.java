@@ -1,14 +1,16 @@
-package finalPractice;
+package MUMPractice;
 
 public class HodderNumber {
 
 	public static void main(String[] args) {
-		System.out.println(isHodderNumber(127));
+		int n = 255;
+		int result = isHodderNumber(n);
+		System.out.println(result);
 	}
 	
 	public static int isHodderNumber(int n) {
-		for(int i = 0; i < n; i++) {
-			if(isPrime(n) && power(2,i) - 1 == n) {
+		for(int j = 2; j <= n; j++) {
+			if(((Math.pow(2, j)-1 == n) && isPrime(((int)Math.pow(2, j)-1)))){
 				return 1;
 			}
 		}
@@ -16,20 +18,14 @@ public class HodderNumber {
 	}
 	
 	public static boolean isPrime(int n) {
-		int composite = 0;
+		boolean isPrime = true;
 		for(int i = 2; i < n; i++) {
 			if(n % i == 0) {
-				composite = 1;
+				isPrime = false;
+				break;
 			}
 		}
-		return composite != 1? true : false;
+		return isPrime;
 	}
-	
-	public static int power(int n, int pow) {
-		int power = 1;
-		for(int i = 1; i <= pow; i++) {
-			power *= n;
-		}
-		return power;
-	}
+
 }

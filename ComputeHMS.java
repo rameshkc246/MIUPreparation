@@ -1,23 +1,26 @@
-package finalPractice;
+package MUMPractice;
 
 public class ComputeHMS {
 
 	public static void main(String[] args) {
-		int sec = 7200;
-		int[] rslt = computeHMS(sec);
-		for(int x : rslt) System.out.print(x + ",");
+		int second = 50;
+		int[] result = computeHMS(second);
+		for(int x : result) {
+			System.out.println(x);
+		}
 	}
 	
-	public static int[] computeHMS(int sec) {
-		int hour, minutes;
-		int[] rslt = new int[3];
-		hour = sec / 3600;
-		sec %= 3600;
-		minutes = sec / 60;
-		sec %= 60;
-		rslt[0] = hour;
-		rslt[1] = minutes;
-		rslt[2] = sec;
-		return rslt;
+	public static int[] computeHMS(int second) {
+		int[] result = new int[3];
+		int hour, minute;
+		hour = second / 3600;
+		result[0] = hour;
+		second %= 3600;
+		minute = second / 60;
+		result[1] = minute;
+		second %= 60;
+		result[2] = second;
+		return result;
 	}
+
 }

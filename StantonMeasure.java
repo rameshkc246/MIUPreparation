@@ -1,25 +1,24 @@
-package finalPractice;
+package MUMPractice;
 
 public class StantonMeasure {
 
 	public static void main(String[] args) {
-		int[] arr = {3,1,1,3,3,1,3,2,3,4,3};
-		int result = stantonMeasure(arr);
+		int[] a = {3,1,1,1,3,6,3,6,5,3,3};
+		int result = stantonMeasure(a);
 		System.out.println(result);
 	}
 	
-	public static int stantonMeasure(int[] arr) {
-		int countOne = 0, countOneCountNumber = 0;
-		for(int i = 0; i < arr.length; i++) {
-			if(arr[i] == 1) {
-				countOne++;
-			}
+	public static int stantonMeasure(int[] a) {
+		int onecount = 0, stantoncount = 0;
+		for(int i = 0; i < a.length; i++) {
+			if(a[i] == 1)
+				onecount++;
 		}
-		for(int i = 0; i < arr.length; i++) {
-			if(arr[i] == countOne) {
-				countOneCountNumber++;
-			}
+		for(int j = 0; j < a.length; j++) {
+			if(a[j] == onecount && onecount != 0)
+				stantoncount++;
 		}
-		return countOneCountNumber;
+		return stantoncount;
 	}
+
 }

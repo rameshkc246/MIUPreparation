@@ -1,21 +1,23 @@
-package finalPractice;
+package MUMPractice;
 
 public class VesuvianNumber {
 
 	public static void main(String[] args) {
-		System.out.println(isVesuvian(50));
+		int n = 50;
+		int result = isVesuvian(n);
+		System.out.println(result);
 	}
 	
 	public static int isVesuvian(int n) {
 		int count = 0;
-		for(int i = 1; i * i <= n; i++) {
-			for(int j = 1; j*j <= n; j++) {
-				if(i*i + j*j == n) {
+		for(int i = 1; i*i < n; i++) {
+			for(int j = i; j*j < n; j++) {
+				if(((i*i) + (j*j)) == n) {
 					count++;
 				}
 			}
-			if(count == 2) return 1;
 		}
-		return 0;
+		return (count == 2)? 1 : 0;
 	}
+
 }

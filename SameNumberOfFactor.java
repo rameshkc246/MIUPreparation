@@ -1,23 +1,30 @@
-package finalPractice;
+package MUMPractice;
 
 public class SameNumberOfFactor {
 
 	public static void main(String[] args) {
-		System.out.println(sameNumberOfFactor(6,21));
+		int n1 = 0;
+		int n2 = 0;
+		int result = sameNumberOfFactor(n1, n2);
+		System.out.println(result);
 	}
 	
 	public static int sameNumberOfFactor(int n1, int n2) {
-		if(n1 < 0 || n2 < 0) return -1;
-		int factorCount1 = factorCount(n1);
-		int factorCount2 = factorCount(n2);
-		return (factorCount1 == factorCount2)? 1 : 0; 
-	}
-	
-	public static int factorCount(int n) {
-		int count = 0;
-		for(int i = 1; i <= n; i++) {
-			if(n % i == 0) count++;
+		int n1Factor = 0, n2Factor = 0;
+		if(n1 < 0 || n2 < 0) {
+			return -1;
 		}
-		return count;
+		for(int i = 1; i <= n1; i++) {
+			if(n1 % i == 0) {
+				n1Factor++;
+			}
+		}
+		for(int i = 1; i <= n2; i++) {
+			if(n2 % i == 0) {
+				n2Factor++;
+			}
+		}
+		return (n1Factor == n2Factor)? 1 : 0;
 	}
+
 }

@@ -1,26 +1,27 @@
-package finalPractice;
+package MUMPractice;
 
 public class WaveArray {
 
 	public static void main(String[] args) {
-		System.out.println(isWave(new int[] {7,6,3,4,5}));
+		int[] arr = {-1,-7,};
+		int result = isWave(arr);
+		System.out.println(result);
 	}
 	
-	public static int isWave(int[] a) {
-		int oddTurn = 1, evenTurn = 1;
-		int k = 0;
-		for(int i = 0; i < a.length; i++) {
-			if(evenTurn == 1 && a[i] % 2 == 0) {
-				k++;
-				evenTurn = 0;
-				oddTurn = 1;
+	public static int isWave(int[] arr) {
+		for(int i = 0; i < arr.length-1; i++) {
+			if(arr[i] % 2 == 0) {
+				if(arr[i+1] % 2 == 0) {
+					return 0;
+				}
 			}
-			if(oddTurn == 1 && a[i] % 2 != 0) {
-				k++;
-				oddTurn = 0;
-				evenTurn = 1;
+			else{
+				if(arr[i+1] % 2 != 0) {
+					return 0;
+				}
 			}
 		}
-		return (k == a.length)? 1 : 0;
+		return 1;
 	}
+
 }

@@ -1,18 +1,23 @@
-package finalPractice;
+package MUMPractice;
 
 public class SmartNumber {
 
 	public static void main(String[] args) {
-		System.out.println(isSmart(22));
+		int n = 10;
+		int result = isSmart(n);
+		System.out.println(result);
 	}
 	
 	public static int isSmart(int n) {
-		int num = 1;
-		if(n == 1) return 1;
-		for(int k = 2; num <= n; k++) {
-			num = num + (k-1);
-			if(num == n) return 1;
+		int k;
+		int element = 1;
+		for(k = 1; k <= n; k++) {
+			element = element + (k-1);
+			if(element == n) {
+				return 1;
+			}
 		}
 		return 0;
 	}
+
 }

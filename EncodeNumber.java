@@ -1,54 +1,55 @@
-package finalPractice;
+package MUMPractice;
+
+import java.util.ArrayList;
 
 public class EncodeNumber {
 
 	public static void main(String[] args) {
-		int n = 1;
-		int[] rslt = encodeNumber(n);
-		for(int x : rslt) {
-			System.out.print(x + ",");
+		int n = 11;
+		int[] result = encodeNumber(n);
+		for(int x: result) {
+			System.out.println(x);
 		}
 	}
 	
 	public static int[] encodeNumber(int n) {
-		int num = n, count = 0;
-		if(n <= 1) return null;
-		for(int i = 2; i <= n; i++) {
-			if(num % i == 0 && isPrime(i)) {
-				while(num % i == 0 && num != 0) {
-					count++;
-					num /= i;
-				}
-			}
-			if(num == 0) {
-				break;
-			}
+		if(n <= 1) {
+			return null;
 		}
-		int[] rslt = new int[count];
-		num = n;
-		int index = 0;
-		for(int i = 2; i <= n; i++) {
-			if(num % i == 0 && isPrime(i)) {
-				while(num % i == 0 && num != 0) {
-					rslt[index++] = i;;
-					num /= i;
-				}
+		ArrayList<Integer> factorList = new ArrayList<Integer>();
+		for(int i = 1; i < n; i++) {
+			int primeFactor = nextPrime(i);
+			while(n % primeFactor == 0) {
+				factorList.add(primeFactor);
+				n /= primeFactor;
 			}
-			if(num == 0) {
+			if(n == 1)
 				break;
-			}
 		}
-		return rslt;
+		int[] result = new int[factorList.size()];
+		for(int i = 0; i < result.length; i++) {
+			result[i] = factorList.get(i);
+		}
+		return result;
 	}
 	
-	public static boolean isPrime(int n) {
-		int composite = 0;
-		for(int i = 2; i < n; i++) {
-			if(n % i == 0) {
-				composite = 1;
-			}
-		}
-		return composite == 1? false : true;
-	}
+	 public static int nextPrime(int n) {
+	    	int composite = 0;
+	    	for(int i = n+1; i < Integer.MAX_VALUE; i++) {
+	    		for(int j = 2; j < i; j++) {
+	    			if(i % j == 0) {
+	    				composite = 1;
+	    				break;
+	    			}
+	    		}
+	    		if(composite == 0) {
+	    			return i ;
+	    		}
+	    		else {
+	    			composite = 0;
+	    		}
+	    	}
+			return 0;
+	 }
 
 }

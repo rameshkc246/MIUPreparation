@@ -1,22 +1,28 @@
-package finalPractice;
+package MUMPractice;
 
 import java.util.ArrayList;
 
 public class TrivalentArray {
 
 	public static void main(String[] args) {
-		System.out.println(isTrivalent(new int[] {2,3,4,3,2,3,4,6}));
+		int[] a = {2,1,4,22,22};
+		int result = isTrivalent(a);
+		System.out.println(result);
 	}
-		
+	
 	public static int isTrivalent(int[] a) {
-		ArrayList<Integer> list = new ArrayList<Integer>();
+		ArrayList<Integer> arrayValues = new ArrayList<Integer>();
+		if(a.length == 0)
+			return 0;
 		for(int i = 0; i < a.length; i++) {
-			if(!list.contains(a[i])) {
-				list.add(a[i]);
-				if(list.size() > 3)
-					return 0;
+			if(!arrayValues.contains(a[i])) {
+				arrayValues.add(a[i]);
+			}
+			if(arrayValues.size() > 3) {
+				return 0;
 			}
 		}
-		return list.size() == 3? 1 : 0;
+		return 1;
 	}
+
 }

@@ -1,26 +1,32 @@
-package finalPractice;
+package MUMPractice;
 
 public class IsolatedNumber {
 
 	public static void main(String[] args) {
-		System.out.println(isIsolated(58));
+		long n = 0;
+		long result = isIsolated(n);
+		System.out.println(result);
 	}
 	
-	public static int isIsolated(int n) {
-		long sqrt = n*n, cube;
-		int sqrtDigit, cubeDigit;
-		if(n < 1 || n > 2097151) return -1;
-		while(sqrt != 0) {
-			cube = n*n*n;
-			sqrtDigit = (int)(sqrt % 10);
-			while(cube != 0) {
-				cubeDigit = (int)(cube % 10);
-				if(cubeDigit == sqrtDigit) {
+	public static long isIsolated(long n) {
+		long square, cube;
+		long squareDigit, cubeDigit;
+		if(n > 2097151 || n < 1)
+			return -1;
+		square = n * n;
+		cube = n * n * n;
+		long tempcube = cube;
+		while(square != 0) {
+			squareDigit = square % 10;
+			while(tempcube != 0) {
+				cubeDigit = tempcube % 10;
+				if(squareDigit == cubeDigit) {
 					return 0;
 				}
-				cube /= 10;
+				tempcube = tempcube / 10;
 			}
-			sqrt /= 10;
+			square /= 10;
+			tempcube = cube;
 		}
 		return 1;
 	}
