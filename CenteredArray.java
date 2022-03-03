@@ -1,21 +1,43 @@
-package finalPractice;
+package MUMSampleTest;
 
 public class CenteredArray {
 
 	public static void main(String[] args) {
-		System.out.println(isCentered(new int[] {6,3,9,4,5}));
+		int[] a = {};
+		int status = isCenteredArray(a);
+		System.out.println(status);
 	}
 	
-	public static int isCentered(int[] a) {
-		if(a.length % 2 == 0) return 0;
-		int l = 0, r = a.length-1;
-		int mid = a.length/2;
-		while(l < r) {
-			if(a[l] < a[mid] || a[r] < a[mid]) {
+	public static int isCenteredArray(int[] a) {
+		int l = a.length;
+		int count = 1;
+		if(l % 2 == 0 || l == 0) {
+			return 0;
+		}
+		else if(l == 1) {
+			return 1;
+		}
+		else {
+			int m = (int)Math.floor(l/ 2);
+			for(int i = 0; i < l; i++) {
+				if(i == m) {
+					continue;
+				}
+				else if( a[i] > a[m]) {
+					count++;
+				}
+				else {
+					break;
+				}
+			}
+			if(count == l) {
+				return 1;
+			}
+			else {
 				return 0;
 			}
-			l++; r--;
 		}
-		return 1;
+		
 	}
+
 }
